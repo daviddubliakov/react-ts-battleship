@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import classNames from "classnames";
 
 type FiledsType = (string | null | boolean)[][];
 
@@ -22,7 +23,50 @@ const Battleship = () => {
     DEFAULT_FIELDS
   );
 
-  return <div className="wrapper">Battleship</div>;
+  return (
+    <div className="battleship__wrapper">
+      <div className="player__wrapper">
+        <h2>Your board</h2>
+
+        <div className="player-board">
+          {personFields.map((row, rowID) => (
+            <div className="row" key={rowID}>
+              {row.map((col, colID) => (
+                <div
+                  className={classNames("col", {
+                    "play-cell": col === null || typeof col === "boolean",
+                  })}
+                  key={colID}
+                >
+                  {col}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="player__wrapper">
+        <h2>Computer</h2>
+
+        <div className="player-board">
+          {computerFields.map((row, rowID) => (
+            <div className="row" key={rowID}>
+              {row.map((col, colID) => (
+                <div
+                  className={classNames("col", {
+                    "play-cell": col === null || typeof col === "boolean",
+                  })}
+                  key={colID}
+                >
+                  {col}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Battleship;
