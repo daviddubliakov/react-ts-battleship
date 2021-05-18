@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-const DEFAULT_FIELDS = [
+type FiledsType = (string | null | boolean)[][];
+
+const DEFAULT_FIELDS: FiledsType = [
   ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
   ["1", null, null, null, null, null, null, null, null, null, null],
   ["2", null, null, null, null, null, null, null, null, null, null],
@@ -15,8 +17,10 @@ const DEFAULT_FIELDS = [
 ];
 
 const Battleship = () => {
-  const [personFields, setPersonFields] = useState(DEFAULT_FIELDS);
-  const [computerFields, setComputerFields] = useState(DEFAULT_FIELDS);
+  const [personFields, setPersonFields] = useState<FiledsType>(DEFAULT_FIELDS);
+  const [computerFields, setComputerFields] = useState<FiledsType>(
+    DEFAULT_FIELDS
+  );
 
   return <div className="wrapper">Battleship</div>;
 };
